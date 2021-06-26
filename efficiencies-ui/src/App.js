@@ -6,7 +6,9 @@ async function App() {
 
 
   const snapshot = await db.collection('teams').get();
-  console.log(snapshot)
+  snapshot.forEach((doc) => {
+    console.log(doc.id, '=>', doc.data());
+  });
 
   return (
     <>
