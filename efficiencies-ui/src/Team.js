@@ -5,14 +5,12 @@ async function Team() {
     const db = firebase.firestore()
     const snapshot = await db.collection('teams').get();
     console.log(snapshot)
-    snapshot.forEach((doc) => {
-        console.log(doc.id, '=>', doc.data());
-      });
+    
     return (
-        <div>
-            
-        </div>
-    )
+        snapshot.forEach((doc) => {
+            <div>{doc.id} : {doc.data()}</div>
+          })
+    );
 }
 
 export default Team;
