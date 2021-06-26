@@ -1,15 +1,16 @@
-import React from 'react'
+import React, {useState} from 'react'
 import firebase from './Firebase.js'
 
-async function Team() {
+function Team() {
+    const [teams, setTeams] = useState([])
+
+
     const db = firebase.firestore()
-    const snapshot = await db.collection('teams').get();
-    console.log(snapshot)
+    db.collection('teams').get().then(response => setTeams(response));
+
     
     return (
-        snapshot.forEach((doc) => {
-            <div>{doc.id} : {doc.data()}</div>
-          })
+       <div>{{teams}}</div>
     );
 }
 
