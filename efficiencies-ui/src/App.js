@@ -1,11 +1,12 @@
 import './App.css';
 import firebase from './Firebase.js'
 
-function App() {
+async function App() {
+  const db = firebase.firestore()
+
+
   const snapshot = await db.collection('teams').get();
-  snapshot.forEach((doc) => {
-    console.log(doc.id, '=>', doc.data());
-  });
+  console.log(snapshot)
 
   return (
     <>
