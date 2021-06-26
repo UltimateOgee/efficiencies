@@ -10,7 +10,7 @@ function App() {
   };
   
   // Add a new document in collection "cities" with ID 'LA'
-  const res = firebase.collection('cities').doc('LA').set(data);
+  const res = await db.collection('cities').doc('LA').set(data);
 
   return (
     <>
