@@ -15,7 +15,6 @@ let firebaseConfig = {
 function App() {
   return (
     <FirebaseAppProvider firebaseConfig={firebaseConfig}>
-      
       <Team />
     </FirebaseAppProvider>
   );

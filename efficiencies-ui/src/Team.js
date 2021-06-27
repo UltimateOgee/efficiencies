@@ -1,4 +1,5 @@
 import React from "react";
+import 'firebase/firestore';
 import {
   useFirestoreDocData,
   useFirestore,
@@ -13,9 +14,9 @@ function Team() {
   const { status, data } = useFirestoreDocData(teamRef);
 
   // easily check the loading status
-  if (status === "loading") {
+  if (status === "loading") { 
     return <p>Fetching team data...</p>;
-  }
+  } 
 
   return <p>The team name is {data.name}!</p>;
 }
