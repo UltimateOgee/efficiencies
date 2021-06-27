@@ -2,7 +2,7 @@ import "./App.css";
 import Team from "./Team";
 import { FirebaseAppProvider } from "reactfire";
 
-let firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyAgcEnJzVuKthqlkwmaqUM0I_-0xmix_S4",
   authDomain: "efficiencies-e21b3.firebaseapp.com",
   projectId: "efficiencies-e21b3",
@@ -15,7 +15,6 @@ let firebaseConfig = {
 function App() {
   return (
     <FirebaseAppProvider firebaseConfig={firebaseConfig}>
-      
       <Team />
     </FirebaseAppProvider>
   );
