@@ -1,17 +1,23 @@
-import React, {useState} from 'react'
-import firebase from './Firebase.js'
+import React from "react";
+import {
+  useFirestoreDocData,
+  useFirestore,
+} from "reactfire";
 
 function Team() {
-    const [teams, setTeams] = useState([])
 
+  // easily access the Firestore library
+  const teamRef = useFirestore().collection("teams").doc("0skt5e2jNhjKlVh1mFoB");
 
-    const db = firebase.firestore()
-    db.collection('teams').get().then(response => setTeams(response));
+  // subscribe to a document for realtime updates. just one line!
+  const { status, data } = useFirestoreDocData(teamRef);
 
-    
-    return (
-       <div>{{teams}}</div>
-    );
+  // easily check the loading status
+  if (status === "loading") {
+    return <p>Fetching team data...</p>;
+  }
+
+  return <p>The team name is {data.name}!</p>;
 }
 
 export default Team;
