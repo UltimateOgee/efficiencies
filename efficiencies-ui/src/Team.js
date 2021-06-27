@@ -12,6 +12,9 @@ function Team() {
 
   // subscribe to a document for realtime updates. just one line!
   const { status, data } = useFirestoreDocData(teamRef);
+  
+  //update a doc
+  teamRef.set({name: 'newName'});
 
   // easily check the loading status
   if (status === "loading") { 
