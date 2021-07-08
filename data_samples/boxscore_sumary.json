@@ -1,0 +1,358 @@
+{
+    "resource": "boxscoresummary",
+    "parameters": {
+        "GameID": "0020500303"
+    },
+    "resultSets": [
+        {
+            "name": "GameSummary",
+            "headers": [
+                "GAME_DATE_EST",
+                "GAME_SEQUENCE",
+                "GAME_ID",
+                "GAME_STATUS_ID",
+                "GAME_STATUS_TEXT",
+                "GAMECODE",
+                "HOME_TEAM_ID",
+                "VISITOR_TEAM_ID",
+                "SEASON",
+                "LIVE_PERIOD",
+                "LIVE_PC_TIME",
+                "NATL_TV_BROADCASTER_ABBREVIATION",
+                "LIVE_PERIOD_TIME_BCAST",
+                "WH_STATUS"
+            ],
+            "rowSet": [
+                [
+                    "2005-12-13T00:00:00",
+                    4,
+                    "0020500303",
+                    3,
+                    "Final",
+                    "20051213/SACMIN",
+                    1610612750,
+                    1610612758,
+                    "2005",
+                    4,
+                    " ",
+                    null,
+                    "Q4   - ",
+                    1
+                ]
+            ]
+        },
+        {
+            "name": "OtherStats",
+            "headers": [
+                "LEAGUE_ID",
+                "TEAM_ID",
+                "TEAM_ABBREVIATION",
+                "TEAM_CITY",
+                "PTS_PAINT",
+                "PTS_2ND_CHANCE",
+                "PTS_FB",
+                "LARGEST_LEAD",
+                "LEAD_CHANGES",
+                "TIMES_TIED",
+                "TEAM_TURNOVERS",
+                "TOTAL_TURNOVERS",
+                "TEAM_REBOUNDS",
+                "PTS_OFF_TO"
+            ],
+            "rowSet": [
+                [
+                    "00",
+                    1610612750,
+                    "MIN",
+                    "Minnesota",
+                    30,
+                    17,
+                    2,
+                    6,
+                    6,
+                    4,
+                    0,
+                    7,
+                    11,
+                    11
+                ],
+                [
+                    "00",
+                    1610612758,
+                    "SAC",
+                    "Sacramento",
+                    24,
+                    11,
+                    7,
+                    14,
+                    7,
+                    4,
+                    0,
+                    6,
+                    9,
+                    3
+                ]
+            ]
+        },
+        {
+            "name": "Officials",
+            "headers": [
+                "OFFICIAL_ID",
+                "FIRST_NAME",
+                "LAST_NAME",
+                "JERSEY_NUM"
+            ],
+            "rowSet": [
+                [
+                    1192,
+                    "Bennett",
+                    "Salvatore",
+                    "15"
+                ],
+                [
+                    1193,
+                    "Michael",
+                    "Smith",
+                    "38"
+                ],
+                [
+                    2878,
+                    "Tommy",
+                    "Nunez Jr.",
+                    "28"
+                ]
+            ]
+        },
+        {
+            "name": "InactivePlayers",
+            "headers": [
+                "PLAYER_ID",
+                "FIRST_NAME",
+                "LAST_NAME",
+                "JERSEY_NUM",
+                "TEAM_ID",
+                "TEAM_CITY",
+                "TEAM_NAME",
+                "TEAM_ABBREVIATION"
+            ],
+            "rowSet": [
+                [
+                    2441,
+                    "Jamal",
+                    "Sampson",
+                    "31",
+                    1610612758,
+                    "Sacramento",
+                    "Kings",
+                    "SAC"
+                ],
+                [
+                    1607,
+                    "Troy",
+                    "Hudson",
+                    "16",
+                    1610612750,
+                    "Minnesota",
+                    "Timberwolves",
+                    "MIN"
+                ],
+                [
+                    101204,
+                    "Dwayne",
+                    "Jones",
+                    "11",
+                    1610612750,
+                    "Minnesota",
+                    "Timberwolves",
+                    "MIN"
+                ],
+                [
+                    101152,
+                    "Bracey",
+                    "Wright",
+                    "6",
+                    1610612750,
+                    "Minnesota",
+                    "Timberwolves",
+                    "MIN"
+                ]
+            ]
+        },
+        {
+            "name": "GameInfo",
+            "headers": [
+                "GAME_DATE",
+                "ATTENDANCE",
+                "GAME_TIME"
+            ],
+            "rowSet": [
+                [
+                    "TUESDAY, DECEMBER 13, 2005",
+                    13989,
+                    "2:20"
+                ]
+            ]
+        },
+        {
+            "name": "LineScore",
+            "headers": [
+                "GAME_DATE_EST",
+                "GAME_SEQUENCE",
+                "GAME_ID",
+                "TEAM_ID",
+                "TEAM_ABBREVIATION",
+                "TEAM_CITY_NAME",
+                "TEAM_NICKNAME",
+                "TEAM_WINS_LOSSES",
+                "PTS_QTR1",
+                "PTS_QTR2",
+                "PTS_QTR3",
+                "PTS_QTR4",
+                "PTS_OT1",
+                "PTS_OT2",
+                "PTS_OT3",
+                "PTS_OT4",
+                "PTS_OT5",
+                "PTS_OT6",
+                "PTS_OT7",
+                "PTS_OT8",
+                "PTS_OT9",
+                "PTS_OT10",
+                "PTS"
+            ],
+            "rowSet": [
+                [
+                    "2005-12-13T00:00:00",
+                    4,
+                    "0020500303",
+                    1610612750,
+                    "MIN",
+                    "Minnesota",
+                    "Timberwolves",
+                    "12-8",
+                    19,
+                    20,
+                    26,
+                    26,
+                    0,
+                    0,
+                    0,
+                    0,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    91
+                ],
+                [
+                    "2005-12-13T00:00:00",
+                    4,
+                    "0020500303",
+                    1610612758,
+                    "SAC",
+                    "Sacramento",
+                    "Kings",
+                    "10-12",
+                    24,
+                    20,
+                    23,
+                    26,
+                    0,
+                    0,
+                    0,
+                    0,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    93
+                ]
+            ]
+        },
+        {
+            "name": "LastMeeting",
+            "headers": [
+                "GAME_ID",
+                "LAST_GAME_ID",
+                "LAST_GAME_DATE_EST",
+                "LAST_GAME_HOME_TEAM_ID",
+                "LAST_GAME_HOME_TEAM_CITY",
+                "LAST_GAME_HOME_TEAM_NAME",
+                "LAST_GAME_HOME_TEAM_ABBREVIATION",
+                "LAST_GAME_HOME_TEAM_POINTS",
+                "LAST_GAME_VISITOR_TEAM_ID",
+                "LAST_GAME_VISITOR_TEAM_CITY",
+                "LAST_GAME_VISITOR_TEAM_NAME",
+                "LAST_GAME_VISITOR_TEAM_CITY1",
+                "LAST_GAME_VISITOR_TEAM_POINTS"
+            ],
+            "rowSet": [
+                [
+                    "0020500303",
+                    "0020500241",
+                    "2005-12-04T00:00:00",
+                    1610612750,
+                    "Minnesota",
+                    "Timberwolves",
+                    "MIN",
+                    85,
+                    1610612758,
+                    "Sacramento",
+                    "Kings",
+                    "SAC",
+                    77
+                ]
+            ]
+        },
+        {
+            "name": "SeasonSeries",
+            "headers": [
+                "GAME_ID",
+                "HOME_TEAM_ID",
+                "VISITOR_TEAM_ID",
+                "GAME_DATE_EST",
+                "HOME_TEAM_WINS",
+                "HOME_TEAM_LOSSES",
+                "SERIES_LEADER"
+            ],
+            "rowSet": [
+                [
+                    "0020500303",
+                    1610612750,
+                    1610612758,
+                    "2005-12-13T00:00:00",
+                    2,
+                    1,
+                    "Minnesota"
+                ]
+            ]
+        },
+        {
+            "name": "AvailableVideo",
+            "headers": [
+                "GAME_ID",
+                "VIDEO_AVAILABLE_FLAG",
+                "PT_AVAILABLE",
+                "PT_XYZ_AVAILABLE",
+                "WH_STATUS",
+                "HUSTLE_STATUS",
+                "HISTORICAL_STATUS"
+            ],
+            "rowSet": [
+                [
+                    "0020500303",
+                    0,
+                    0,
+                    0,
+                    1,
+                    0,
+                    0
+                ]
+            ]
+        }
+    ]
+}
