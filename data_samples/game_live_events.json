@@ -1,0 +1,111 @@
+{
+    "g": {
+        "gid": "1",
+        "pd": [
+            {
+                "period": 1,
+                "plays": [
+                    {
+                        "id": 1,
+                        "play_type": "offense",
+                        "play_name": "Horns Vert",
+                        "result": "Made 2",
+                        "pts": 2
+                    },
+                    {
+                        "id": 2,
+                        "play_type": "offense",
+                        "play_name": "5 Out",
+                        "result": "Made 3",
+                        "pts": 3
+                    },
+                    {
+                        "id": 3,
+                        "play_type": "offense",
+                        "play_name": "Pistol Out",
+                        "result": "Missed 2",
+                        "pts": 0
+                    }
+                ]
+            },
+            {
+                "period": 2,
+                "plays": [
+                    {
+                        "id": 4,
+                        "play_type": "offense",
+                        "play_name": "Horns Vert",
+                        "result": "Made 2",
+                        "pts": 2
+                    },
+                    {
+                        "id": 5,
+                        "play_type": "offense",
+                        "play_name": "5 Out",
+                        "result": "Made 3",
+                        "pts": 3
+                    },
+                    {
+                        "id": 6,
+                        "play_type": "offense",
+                        "play_name": "Pistol Out",
+                        "result": "Missed 2",
+                        "pts": 0
+                    }
+                ]
+            },
+            {
+                "period": 3,
+                "plays": [
+                    {
+                        "id": 7,
+                        "play_type": "offense",
+                        "play_name": "Horns Vert",
+                        "result": "Made 2",
+                        "pts": 2
+                    },
+                    {
+                        "id": 8,
+                        "play_type": "offense",
+                        "play_name": "5 Out",
+                        "result": "Made 3",
+                        "pts": 3
+                    },
+                    {
+                        "id": 9,
+                        "play_type": "offense",
+                        "play_name": "Pistol Out",
+                        "result": "Missed 2",
+                        "pts": 0
+                    }
+                ]
+            },
+            {
+                "period": 4,
+                "plays": [
+                    {
+                        "id": 10,
+                        "play_type": "offense",
+                        "play_name": "Horns Vert",
+                        "result": "Made 2",
+                        "pts": 2
+                    },
+                    {
+                        "id": 11,
+                        "play_type": "offense",
+                        "play_name": "5 Out",
+                        "result": "Made 3",
+                        "pts": 3
+                    },
+                    {
+                        "id": 12,
+                        "play_type": "offense",
+                        "play_name": "Pistol Out",
+                        "result": "Missed 2",
+                        "pts": 0
+                    }
+                ]
+            }
+        ]
+    }
+}
