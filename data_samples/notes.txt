@@ -1,0 +1,8 @@
+
+# Todo
+
+
+- Roster data
+- User/coach/team data
+- Calculated Metrics - unsure how this is going to be formatted
+
