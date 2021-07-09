@@ -1,6 +1,30 @@
-// game metadata
-{'game_id': '0021900316', 'date': '2019-12-05T00: 00: 00', 'home_team_id': 1610612764, 'visitor_team_id': 1610612755, 'status': 'Final'
-}
-// final game payload
-{'game_id': '0021901317', 'date': '2020-08-14', 'status': 'Final', 'home_team_id': 1610612746, 'home_team_abbreviation': 'LAC', 'home_score': '107', 'away_team_id': 1610612760, 'away_team_abbreviation': 'OKC', 'away_score': '103'
+{
+    "shedule": {
+        "games": [
+        {
+            "game_id": 1,
+            "date": "2019-12-05T00: 00: 00",
+            "home_away": "H",
+            "opponent": "Amherst",
+            "opponent_id": 1,
+            "status": "Final"
+        },
+        {
+            "game_id": 2,
+            "date": "2019-12-12T00: 00: 00",
+            "home_away": "A",
+            "opponent": "Michigan",
+            "opponent_id": 2,
+            "status": "Final"
+        },
+        {
+            "game_id": 3,
+            "date": "2019-12-19T00: 00: 00",
+            "home_away": "H",
+            "opponent": "H",
+            "opponent_id": 3,
+            "status": "Final"
+        }
+    ]
+    }
 }
