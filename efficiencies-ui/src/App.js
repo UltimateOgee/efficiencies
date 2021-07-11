@@ -1,4 +1,3 @@
-import "./App.css";
 import Team from "./Team";
 import { FirebaseAppProvider } from "reactfire";
 
