@@ -4,13 +4,13 @@ import { useFirestoreDocData, useFirestore } from "reactfire";
 
 function Team() {
   //object to hold form data:
-  const [teamData, setTeamData] = useState({
+  /*const [teamData, setTeamData] = useState({
     teamName: "",
     ownerName: "",
     contactEmail: "",
     username: "",
     password: "",
-  });
+  });*/
 
   // access a document in the firestore database
   const teamRef = useFirestore().collection("teams").doc("testTeam");
@@ -31,20 +31,22 @@ function Team() {
 
   //FirebaseError: Function DocumentReference.set() called with invalid data. Data must be an object, but it was: undefined (found in document teams/testTeam)
   //https://gitmemory.com/issue/FirebaseExtended/reactfire/320/756446884
-
+  /*
   useEffect(async () => {
     //TODO add status loading somewhere on form...
     //await data being not undefined...
-    var x = await useFirestore().collection("teams").doc("testTeam").get();
-    console.log(x.data());
-    setTeamData(x.data());
+    console.log(status);
+    console.log(firstValuePromise);
+    let myData = await firstValuePromise;
+    console.log(myData);
+    setTeamData(myData);
   }, []);
 
   //second param is optional list to link useEffect too
   useEffect(() => {
     teamRef.set(teamData);
   }, [teamData, teamRef]);
-
+*/
   /*
   TEAM FORM ITEMS:
     - Team name
@@ -55,26 +57,54 @@ function Team() {
   */
 
   const dataHandler = (event) => {
-    setTeamData({ ...teamData, [event.target.name]: event.target.value });
+    //setTeamData({ ...teamData, [event.target.name]: event.target.value });
+    teamRef.set({ ...data, [event.target.name]: event.target.value });
   };
+
+  //const { teamName, ownerName, contactEmail, username, password } = data;
 
   return (
     <form>
       <label>
         Team Name:
-        <input type="text" name="teamName" onChange={dataHandler} />
+        <input
+          type="text"
+          name="teamName"
+          onChange={dataHandler}
+          value={data?.teamName ?? ""}
+        />
         <br />
         Owner Name:
-        <input type="text" name="ownerName" onChange={dataHandler} />
+        <input
+          type="text"
+          name="ownerName"
+          onChange={dataHandler}
+          value={data?.ownerName ?? ""}
+        />
         <br />
         Contact Email:
-        <input type="text" name="contactEmail" onChange={dataHandler} />
+        <input
+          type="text"
+          name="contactEmail"
+          onChange={dataHandler}
+          value={data?.contactEmail ?? ""}
+        />
         <br />
         Username:
-        <input type="text" name="username" onChange={dataHandler} />
+        <input
+          type="text"
+          name="username"
+          onChange={dataHandler}
+          value={data?.username ?? ""}
+        />
         <br />
         Password:
-        <input type="text" name="password" onChange={dataHandler} />
+        <input
+          type="text"
+          name="password"
+          onChange={dataHandler}
+          value={data?.password ?? ""}
+        />
       </label>
     </form>
   );
