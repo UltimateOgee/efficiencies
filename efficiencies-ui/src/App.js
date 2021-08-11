@@ -31,13 +31,6 @@ const firebaseConfig = {
 
 function App() {
   return (
-    /*
-    <FirebaseAuthProver>
-      <Login>
-      <IfFireBaseAuthed>
-        <FirebaseAppProver>
-          <Router>
-    */
     <FirebaseAuthProvider firebase={firebase} {...firebaseConfig}>
       <FirebaseAppProvider firebaseConfig={firebaseConfig}>
         <IfFirebaseUnAuthed>
