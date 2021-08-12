@@ -27,6 +27,7 @@ export default function SignIn() {
       .catch((error) => {
         var errorCode = error.code;
         var errorMessage = error.message;
+        enableComponents()
         console.log(errorMessage);
       });
     })
@@ -34,6 +35,7 @@ export default function SignIn() {
       // Handle Errors here.
       var errorCode = error.code;
       var errorMessage = error.message;
+      enableComponents()
       console.log(errorMessage);
     });
   }
