@@ -1,4 +1,4 @@
-import React from "react";
+import {React, useState} from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import firebase from "firebase/app";
@@ -11,8 +11,9 @@ Tech Spec:
 - If user is loggedin and authorized - proper info should show
 */
 export default function SignIn() {
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isDisabled, setIsDisabled] = useState(false);
 
   const signIn = () => {
     firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
@@ -37,6 +38,23 @@ export default function SignIn() {
     });
   }
 
+  //https://www.pluralsight.com/guides/binding-functions-and-enabledisable-state-in-html-buttons-with-reactjs
+  const enableComponents = () => {
+    setIsDisabled(false);
+  }
+
+  const handleSubmitClicked = () => {
+    setIsDisabled(true);
+    signIn();
+
+    // setTimeout(
+    //   function() {
+    //     enableComponents()
+    //   }.bind(this),
+    //   3000
+    // );
+  }
+
   return (
     <>
       <Typography variant="h4">
@@ -51,6 +69,8 @@ export default function SignIn() {
         <br/>
         
         <Button 
+        disabled={isDisabled}
+        onClick={handleSubmitClicked.bind(this)}
         variant="contained"
         color="primary" 
         href="#contained-buttons">

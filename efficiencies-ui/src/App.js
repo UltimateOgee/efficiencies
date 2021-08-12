@@ -35,7 +35,7 @@ function App() {
     <FirebaseAuthProvider firebase={firebase} {...firebaseConfig}>
       <FirebaseAppProvider firebaseConfig={firebaseConfig}>
         <IfFirebaseUnAuthed>
-          <CreateAccount />
+          <SignIn />
         </IfFirebaseUnAuthed>
         <IfFirebaseAuthed>
           <Router>

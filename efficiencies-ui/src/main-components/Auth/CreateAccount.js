@@ -7,7 +7,8 @@ import firebase from "firebase/app";
 export default function CreateAccount() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  
+  const [isDisabled, setIsDisabled] = useState(false);
+
   const createAccount = () => {
     firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
     .then(() => {
@@ -15,7 +16,6 @@ export default function CreateAccount() {
       .then((userCredential) => {
         // Signed in 
         var user = userCredential.user;
-        console.log(user);
       })
       .catch((error) => {
         var errorCode = error.code;
@@ -23,8 +23,26 @@ export default function CreateAccount() {
         console.log(errorMessage)
       });
     });
+  };
 
+  //https://www.pluralsight.com/guides/binding-functions-and-enabledisable-state-in-html-buttons-with-reactjs
+  const enableComponents = () => {
+    setIsDisabled(false);
   }
+
+  const handleSubmitClicked = () => {
+    setIsDisabled(true);
+    createAccount();
+
+    // setTimeout(
+    //   function() {
+    //     enableComponents()
+    //   }.bind(this),
+    //   3000
+    // );
+  }
+
+
 
   return (
     <>
@@ -40,6 +58,8 @@ export default function CreateAccount() {
         <br/>
         
         <Button
+        disabled={isDisabled}
+        onClick={handleSubmitClicked.bind(this)}
         variant="contained"
         color="primary" 
         href="#contained-buttons">
