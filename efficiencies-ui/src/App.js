@@ -11,11 +11,11 @@ import "firebase/auth";
 import firebase from "firebase/app";
 import {
   FirebaseAuthProvider,
-  FirebaseAuthConsumer,
+  // FirebaseAuthConsumer,
   IfFirebaseAuthed,
-  IfFirebaseAuthedAnd,
+  // IfFirebaseAuthedAnd,
   IfFirebaseUnAuthed,
-  IfFirebaseAuthedOr,
+  // IfFirebaseAuthedOr,
 } from "@react-firebase/auth";
 
 //move to own JS file
@@ -61,12 +61,6 @@ function App() {
                 <Route exact path="/">
                   <div>nothing here right now...</div>
                 </Route>
-                {/* <Route path="/signin">
-                  <SignIn/>
-                </Route>
-                <Route path="/createaccount">
-                  <CreateAccount />
-                </Route> */}
                 <Route path="/newgame">
                   <NewGame />
                 </Route>

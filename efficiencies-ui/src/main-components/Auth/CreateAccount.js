@@ -1,6 +1,6 @@
-import {React, useEffect, useState} from "react";
+import {React, useState} from "react";
 import TextField from "@material-ui/core/TextField";
-import { Link, Typography } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import firebase from "firebase/app";
 
@@ -15,10 +15,10 @@ export default function CreateAccount() {
       firebase.auth().createUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
         // Signed in 
-        var user = userCredential.user;
+        // var user = userCredential.user;
       })
       .catch((error) => {
-        var errorCode = error.code;
+        // var errorCode = error.code;
         var errorMessage = error.message;
         enableComponents()
         console.log(errorMessage)
@@ -26,7 +26,7 @@ export default function CreateAccount() {
     })
     .catch((error) => {
       // Handle Errors here.
-      var errorCode = error.code;
+      // var errorCode = error.code;
       var errorMessage = error.message;
       enableComponents()
       console.log(errorMessage);
@@ -49,8 +49,6 @@ export default function CreateAccount() {
     //   3000
     // );
   }
-
-
 
   return (
     <>
