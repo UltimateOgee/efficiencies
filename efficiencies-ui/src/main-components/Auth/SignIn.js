@@ -4,7 +4,6 @@ import Button from "@material-ui/core/Button";
 import firebase from "firebase/app";
 import { Link, Typography } from "@material-ui/core";
 
-
 /*
 Tech Spec:
 - If no active session - always redirect to login
@@ -79,13 +78,6 @@ export default function SignIn() {
         sign in
         </Button>
       </form>
-
-      <br/>
-        <Typography variant="h6">
-          <Link href={"/createaccount"}>
-            create an account
-          </Link>
-        </Typography>
     </>
   );
 }

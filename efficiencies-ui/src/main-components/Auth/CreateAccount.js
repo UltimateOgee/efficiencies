@@ -20,9 +20,17 @@ export default function CreateAccount() {
       .catch((error) => {
         var errorCode = error.code;
         var errorMessage = error.message;
+        enableComponents()
         console.log(errorMessage)
       });
-    });
+    })
+    .catch((error) => {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      enableComponents()
+      console.log(errorMessage);
+    });;
   };
 
   //https://www.pluralsight.com/guides/binding-functions-and-enabledisable-state-in-html-buttons-with-reactjs
@@ -66,13 +74,6 @@ export default function CreateAccount() {
         create account
         </Button>
       </form>
-
-      <br/>
-        <Typography variant="h6">
-          <Link href={"/signin"}>
-            back to sign-in
-          </Link>
-        </Typography>
     </>
   );
 }

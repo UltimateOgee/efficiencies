@@ -1,7 +1,6 @@
 import { FirebaseAppProvider } from "reactfire";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import CreateAccount from "./main-components/Auth/CreateAccount";
-import SignIn from "./main-components/Auth/SignIn"
+import AuthPage from "./main-components/Auth/AuthPage"
 import NewGame from "./main-components/NewGame";
 import Analytics from "./main-components/Analytics";
 import Games from "./main-components/Games";
@@ -35,7 +34,7 @@ function App() {
     <FirebaseAuthProvider firebase={firebase} {...firebaseConfig}>
       <FirebaseAppProvider firebaseConfig={firebaseConfig}>
         <IfFirebaseUnAuthed>
-          <SignIn />
+          <AuthPage />
         </IfFirebaseUnAuthed>
         <IfFirebaseAuthed>
           <Router>
@@ -62,12 +61,12 @@ function App() {
                 <Route exact path="/">
                   <div>nothing here right now...</div>
                 </Route>
-                <Route path="/signin">
+                {/* <Route path="/signin">
                   <SignIn/>
                 </Route>
                 <Route path="/createaccount">
                   <CreateAccount />
-                </Route>
+                </Route> */}
                 <Route path="/newgame">
                   <NewGame />
                 </Route>
