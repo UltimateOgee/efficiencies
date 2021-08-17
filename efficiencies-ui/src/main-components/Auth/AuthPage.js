@@ -17,13 +17,6 @@ export default function AuthPage() {
     setIsDisabled(true);
     setSwap(!swap);
     enableComponents();
-
-    // setTimeout(
-    //   function() {
-    //     enableComponents()
-    //   }.bind(this),
-    //   3000
-    // );
   }
 
   if(swap) {
@@ -49,7 +42,7 @@ export default function AuthPage() {
           disabled={isDisabled}
           onClick={handleSubmitClicked.bind(this)}
           >
-            create an account
+            create account
           </Link>
         </Typography>
       </>

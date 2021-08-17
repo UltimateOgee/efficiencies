@@ -7,6 +7,10 @@ import firebase from "firebase/app";
 export default function CreateAccount() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [showEmailError, setShowEmailError] = useState(false);
+  const [showPasswordError, setShowPasswordError] = useState(false);
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
   const [isDisabled, setIsDisabled] = useState(false);
 
   const createAccount = () => {
@@ -18,10 +22,24 @@ export default function CreateAccount() {
         // var user = userCredential.user;
       })
       .catch((error) => {
-        // var errorCode = error.code;
+        var errorCode = error.code;
         var errorMessage = error.message;
-        enableComponents()
-        console.log(errorMessage)
+        if(errorCode === 'auth/weak-password'){
+          setPasswordError(errorMessage);
+          setShowPasswordError(true);
+          setShowEmailError(false);
+        }
+        if(errorCode === 'auth/invalid-email'){
+          setEmailError(errorMessage);
+          setShowEmailError(true);
+          setShowPasswordError(false);
+        }
+        if(errorCode === 'auth/email-already-in-use'){
+          setEmailError(errorMessage);
+          setShowEmailError(true);
+          setShowPasswordError(false);
+        }
+        enableComponents();
       });
     })
     .catch((error) => {
@@ -41,13 +59,6 @@ export default function CreateAccount() {
   const handleSubmitClicked = () => {
     setIsDisabled(true);
     createAccount();
-
-    // setTimeout(
-    //   function() {
-    //     enableComponents()
-    //   }.bind(this),
-    //   3000
-    // );
   }
 
   return (
@@ -58,9 +69,11 @@ export default function CreateAccount() {
 
       <form>
         <TextField id="standard-basic" label="email" onChange={(event) => setEmail(event.target.value)}/>
-        
+        { showEmailError ? <Typography color="error" variant="body1">{emailError}</Typography> : null } 
+
         <br/>
         <TextField id="standard-basic" label="password" type="password" onChange={(event) => setPassword(event.target.value)}/>
+        { showPasswordError ? <Typography color="error" variant="body1">{passwordError}</Typography> : null } 
         <br/>
         
         <Button
