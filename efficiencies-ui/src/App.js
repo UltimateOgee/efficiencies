@@ -1,6 +1,6 @@
 import { FirebaseAppProvider } from "reactfire";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Login from "./main-components/Login";
+import AuthPage from "./main-components/Auth/AuthPage"
 import NewGame from "./main-components/NewGame";
 import Analytics from "./main-components/Analytics";
 import Games from "./main-components/Games";
@@ -11,11 +11,11 @@ import "firebase/auth";
 import firebase from "firebase/app";
 import {
   FirebaseAuthProvider,
-  FirebaseAuthConsumer,
+  // FirebaseAuthConsumer,
   IfFirebaseAuthed,
-  IfFirebaseAuthedAnd,
+  // IfFirebaseAuthedAnd,
   IfFirebaseUnAuthed,
-  IfFirebaseAuthedOr,
+  // IfFirebaseAuthedOr,
 } from "@react-firebase/auth";
 
 //move to own JS file
@@ -31,17 +31,10 @@ const firebaseConfig = {
 
 function App() {
   return (
-    /*
-    <FirebaseAuthProver>
-      <Login>
-      <IfFireBaseAuthed>
-        <FirebaseAppProver>
-          <Router>
-    */
     <FirebaseAuthProvider firebase={firebase} {...firebaseConfig}>
       <FirebaseAppProvider firebaseConfig={firebaseConfig}>
         <IfFirebaseUnAuthed>
-          <Login />
+          <AuthPage />
         </IfFirebaseUnAuthed>
         <IfFirebaseAuthed>
           <Router>
