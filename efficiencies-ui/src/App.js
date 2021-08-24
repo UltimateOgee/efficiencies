@@ -29,6 +29,7 @@ const firebaseConfig = {
   measurementId: "G-4D8M9E70WK",
 };
 
+// Charts? - https://www.chartjs.org/docs/latest/
 function App() {
   return (
     <FirebaseAuthProvider firebase={firebase} {...firebaseConfig}>

@@ -3,6 +3,8 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import firebase from "firebase/app";
 import { Typography } from "@material-ui/core";
+import { useSelector, useDispatch } from 'react-redux'
+import { setUID } from "../../Redux/UserSlice";
 
 /*
 Tech Spec:
@@ -10,22 +12,22 @@ Tech Spec:
 - If user is loggedin and authorized - proper info should show
 */
 export default function SignIn() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [userInfo, setUserInfo] = useState({});
   const [showEmailError, setShowEmailError] = useState(false);
   const [showPasswordError, setShowPasswordError] = useState(false);
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [isDisabled, setIsDisabled] = useState(false);
+  const dispatch = useDispatch()
 
   const signIn = () => {
-    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE)
     .then(() => {
       // New sign-in will be persisted with session persistence.
       // return firebase.auth().signInWithEmailAndPassword(email, password);
-      firebase.auth().signInWithEmailAndPassword(email, password)
+      firebase.auth().signInWithEmailAndPassword(userInfo.email, userInfo.password)
       .then((userCredential) => {
-        // var user = userCredential.user;
+        dispatch(setUID(userCredential.user.uid))
       })
       .catch((error) => {
         var errorCode = error.code;
@@ -79,14 +81,23 @@ export default function SignIn() {
       </Typography>
 
       <form>
-        <TextField id="standard-basic" label="email" onChange={(event) => setEmail(event.target.value)}/>
+      <TextField
+        id='emailInput'
+        label="email" 
+        onChange={(event) => setUserInfo({...userInfo, email: event.target.value})}/>
+
         { showEmailError ? <Typography color="error" variant="body1">{emailError}</Typography> : null } 
 
         <br/>
-        <TextField id="standard-basic" label="password" type="password" onChange={(event) => setPassword(event.target.value)}/>
-        { showPasswordError ? <Typography color="error" variant="body1">{passwordError}</Typography> : null } 
-        <br/>
+        <TextField 
+        id="passwordInput" 
+        label="password" 
+        type="password" 
+        onChange={(event) => setUserInfo({...userInfo, password: event.target.value})}/>
         
+        { showPasswordError ? <Typography color="error" variant="body1">{passwordError}</Typography> : null } 
+        
+        <br/>
         <Button 
         disabled={isDisabled}
         onClick={handleSubmitClicked.bind(this)}
