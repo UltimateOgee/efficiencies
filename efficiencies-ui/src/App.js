@@ -4,7 +4,7 @@ import AuthPage from "./main-components/Auth/AuthPage"
 import NewGame from "./main-components/NewGame";
 import Analytics from "./main-components/Analytics";
 import Games from "./main-components/Games";
-import Profile from "./main-components/Profile";
+import MyTeam from "./main-components/MyTeam";
 
 //are these imports correct?
 import "firebase/auth";
@@ -72,7 +72,7 @@ function App() {
                   <Games />
                 </Route>
                 <Route path="/profile">
-                  <Profile />
+                  <MyTeam />
                 </Route>
               </Switch>
             </div>

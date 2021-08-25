@@ -1,14 +1,16 @@
 import React from "react";
-import Team from "../Team";
 import firebase from "firebase";
+import Header from "./MyTeam/Header"
+import Roster from "./MyTeam/Roster"
+import Plays from "./MyTeam/Plays"
 
-export default function Profile() {
+export default function MyTeam() {
   return (
     <>
-      <div>above team more stuff</div>
-      <Team />
-      <div>below team more stuff</div>
-      <div>Log Out:</div>
+      <Header/>
+      <br/>
+      <Roster/>
+      <Plays/>
       <button
         onClick={() => {
           firebase.auth().signOut();

@@ -4,7 +4,7 @@ import { Typography } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import firebase from "firebase/app";
 import { useSelector, useDispatch } from 'react-redux';
-import { setUID, setUserCredentials } from "../../Redux/UserSlice";
+import { setUID } from "../../Redux/UserSlice";
 
 export default function CreateAccount() {
   const [userInfo, setUserInfo] = useState({});
@@ -64,6 +64,7 @@ export default function CreateAccount() {
     createAccount();
   }
 
+  // TODO - add material ui text box error
   return (
     <>
       <Typography variant="h4">
