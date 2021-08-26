@@ -5,17 +5,30 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+import { makeStyles } from "@material-ui/core/styles";
 
 export default function LiveTrackingButtons() {
   const [playType, setPlayType] = React.useState("");
 
+  const useStyles = makeStyles((theme) => ({
+    root: {
+      flexGrow: 1,
+    },
+    paper: {
+      padding: theme.spacing(2),
+      textAlign: "center",
+    },
+  }));
+
   const handleChange = (event) => {
     setPlayType(event.target.value);
   };
+
+  const classes = useStyles();
   return (
     <>
-      <Grid item xs={8}>
-        <Grid container justifyContent="center" spacing={4}>
+      <div className={classes.root}>
+        <Grid container justifyContent="center" spacing={8}>
           <Grid key={0} item>
             <Button variant="contained" color="primary">
               2-Pointer
@@ -37,12 +50,7 @@ export default function LiveTrackingButtons() {
             </Button>
           </Grid>
           <Grid key={4} item>
-            <Button variant="contained" color="secondary">
-              Submit
-            </Button>
-          </Grid>
-          <Grid key={5} item>
-            <FormControl>
+            <FormControl style={{ minWidth: 300 }}>
               <InputLabel id="select-label">Play Type</InputLabel>
               <Select
                 labelId="select-label"
@@ -50,14 +58,21 @@ export default function LiveTrackingButtons() {
                 value={playType}
                 onChange={handleChange}
               >
-                <MenuItem>Pick and Roll</MenuItem>
-                <MenuItem>ISO</MenuItem>
-                <MenuItem>Shubh's Shwabble dabble method</MenuItem>
+                <MenuItem value={"Pick and Roll"}>Pick and Roll</MenuItem>
+                <MenuItem value={"ISO"}>ISO</MenuItem>
+                <MenuItem value={"Shwabble dabble method"}>
+                  Shwabble dabble method
+                </MenuItem>
               </Select>
             </FormControl>
           </Grid>
+          <Grid key={5} item>
+            <Button variant="contained" color="secondary">
+              Submit
+            </Button>
+          </Grid>
         </Grid>
-      </Grid>
+      </div>
     </>
   );
 }
