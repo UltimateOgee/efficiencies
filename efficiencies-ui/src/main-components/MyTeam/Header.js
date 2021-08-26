@@ -8,7 +8,7 @@ export default function Plays() {
       <Typography variant="h4">
         Trinity Tigers
       </Typography>
-      <Typography variant="body1">
+      <Typography component={'span'} variant="body1">
         Coach E-Money$
       </Typography>
     </>

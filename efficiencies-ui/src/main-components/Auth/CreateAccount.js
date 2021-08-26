@@ -106,8 +106,7 @@ export default function CreateAccount() {
         disabled={isDisabled}
         onClick={handleSubmitClicked.bind(this)}
         variant="contained"
-        color="primary" 
-        href="#contained-buttons">
+        color="primary" >
         create account
         </Button>
       </form>

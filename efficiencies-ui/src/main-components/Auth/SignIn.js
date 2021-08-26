@@ -102,8 +102,7 @@ export default function SignIn() {
         disabled={isDisabled}
         onClick={handleSubmitClicked.bind(this)}
         variant="contained"
-        color="primary" 
-        href="#contained-buttons">
+        color="primary">
         sign in
         </Button>
       </form>
