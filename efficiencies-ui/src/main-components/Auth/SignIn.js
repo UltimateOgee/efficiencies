@@ -4,7 +4,6 @@ import Button from "@material-ui/core/Button";
 import firebase from "firebase/app";
 import { Typography } from "@material-ui/core";
 import { useSelector, useDispatch } from 'react-redux'
-import { setUID } from "../../Redux/UserSlice";
 
 /*
 Tech Spec:
@@ -27,7 +26,7 @@ export default function SignIn() {
       // return firebase.auth().signInWithEmailAndPassword(email, password);
       firebase.auth().signInWithEmailAndPassword(userInfo.email, userInfo.password)
       .then((userCredential) => {
-        dispatch(setUID(userCredential.user.uid))
+        // dispatch(setUID(userCredential.user.uid))
       })
       .catch((error) => {
         var errorCode = error.code;

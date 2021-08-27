@@ -4,7 +4,6 @@ import { Typography } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import firebase from "firebase/app";
 import { useSelector, useDispatch } from 'react-redux';
-import { setUID } from "../../Redux/UserSlice";
 
 export default function CreateAccount() {
   const [userInfo, setUserInfo] = useState({});
@@ -22,7 +21,7 @@ export default function CreateAccount() {
       .then((userCredential) => {
         userCredential.additionalUserInfo.isNewUser = true;
         userCredential.additionalUserInfo.profile = {coachName: userInfo.coachName, teamname: userInfo.teamName}
-        dispatch(setUID(userCredential.user.uid))
+        // dispatch(setUID(userCredential.user.uid))
       })
       .catch((error) => {
         var errorCode = error.code;
@@ -73,7 +72,7 @@ export default function CreateAccount() {
 
       <form>
         <Typography color="error" variant="body1">Email not verified for beta</Typography>
-        <TextField id="standard-basic" 
+        <TextField
         id='emailInput'
         label="email" 
         onChange={(event) => setUserInfo({...userInfo, email: event.target.value})}/>
