@@ -10,6 +10,8 @@ Tech Spec:
 - If no active session - always redirect to login
 - If user is loggedin and authorized - proper info should show
 */
+
+// TODO - https://react-redux-firebase.com/docs/auth.html
 export default function SignIn() {
   const [userInfo, setUserInfo] = useState({});
   const [showEmailError, setShowEmailError] = useState(false);
