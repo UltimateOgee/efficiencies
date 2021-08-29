@@ -1,10 +1,7 @@
 // React
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+// import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Router from './Router'
 import AuthPage from "./main-components/Auth/AuthPage"
-import NewGame from "./main-components/NewGame";
-import Analytics from "./main-components/Analytics";
-import Games from "./main-components/Games";
-import MyTeam from "./main-components/MyTeam";
 import {rrfProps, firebaseConfig} from './Config';
 
 // Firebase Imports
@@ -43,45 +40,7 @@ function App() {
               <AuthPage />
             </IfFirebaseUnAuthed>
             <IfFirebaseAuthed>
-              <Router>
-                <div>
-                  <nav>
-                    <ul>
-                      <li>
-                        <Link to="/newgame">New Game</Link>
-                      </li>
-                      <li>
-                        <Link to="/analytics">Analytics</Link>
-                      </li>
-                      <li>
-                        <Link to="/games">Games</Link>
-                      </li>
-                      <li>
-                        <Link to="/profile">Profile</Link>
-                      </li>
-                    </ul>
-                  </nav>
-
-                  <hr />
-                  <Switch>
-                    <Route exact path="/">
-                      <div>nothing here right now...</div>
-                    </Route>
-                    <Route path="/newgame">
-                      <NewGame />
-                    </Route>
-                    <Route path="/analytics">
-                      <Analytics />
-                    </Route>
-                    <Route path="/games">
-                      <Games />
-                    </Route>
-                    <Route path="/profile">
-                      <MyTeam />
-                    </Route>
-                  </Switch>
-                </div>
-              </Router>
+              <Router />
             </IfFirebaseAuthed>
           </FirebaseAppProvider>
         </FirebaseAuthProvider>
