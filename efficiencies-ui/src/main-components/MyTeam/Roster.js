@@ -3,14 +3,13 @@ import { Typography } from "@material-ui/core";
 import firebase from "firebase";
 import AddTableItem from "./AddTableItem";
 import { useDispatch } from "react-redux";
-import { addRoster } from "../../Redux/UserSlice";
 
 export default function Roster() {
   const [roster, setRoster] = useState([
     {
       'name': 'Emerson Spradling',
       'position': 'Small Forward',
-      'height': '6\'4\"',
+      'height': '6\'4"',
       'weight': '190lbs'
     }
   ])

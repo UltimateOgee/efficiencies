@@ -3,8 +3,6 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import firebase from "firebase/app";
 import { Typography } from "@material-ui/core";
-import { useSelector, useDispatch } from 'react-redux'
-import { setUID } from "../../Redux/UserSlice";
 
 /*
 Tech Spec:
@@ -12,7 +10,6 @@ Tech Spec:
 - If user is loggedin and authorized - proper info should show
 */
 
-// TODO - https://react-redux-firebase.com/docs/auth.html
 export default function SignIn() {
   const [userInfo, setUserInfo] = useState({});
   const [showEmailError, setShowEmailError] = useState(false);
@@ -20,16 +17,14 @@ export default function SignIn() {
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
   const [isDisabled, setIsDisabled] = useState(false);
-  const dispatch = useDispatch()
 
   const signIn = () => {
-    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE)
+    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
     .then(() => {
       // New sign-in will be persisted with session persistence.
-      // return firebase.auth().signInWithEmailAndPassword(email, password);
-      firebase.auth().signInWithEmailAndPassword(userInfo.email, userInfo.password)
-      .then((userCredential) => {
-        dispatch(setUID(userCredential.user.uid))
+      firebase.login({
+        email: userInfo.email,
+        password: userInfo.password
       })
       .catch((error) => {
         var errorCode = error.code;
@@ -103,6 +98,7 @@ export default function SignIn() {
         <Button 
         disabled={isDisabled}
         onClick={handleSubmitClicked.bind(this)}
+        type="submit"
         variant="contained"
         color="primary">
         sign in

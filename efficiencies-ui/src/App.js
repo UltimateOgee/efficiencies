@@ -1,85 +1,47 @@
-import { FirebaseAppProvider } from "reactfire";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+// React
+import {rrfProps, firebaseConfig} from './Config';
+import Router from './Router'
 import AuthPage from "./main-components/Auth/AuthPage"
-import NewGame from "./main-components/NewGame";
-import Analytics from "./main-components/Analytics";
-import Games from "./main-components/Games";
-import MyTeam from "./main-components/MyTeam";
 
-//are these imports correct?
-import "firebase/auth";
+// Firebase Imports
+import { FirebaseAppProvider } from "reactfire";
 import firebase from "firebase/app";
+import "firebase/auth";
+import 'firebase/firestore' 
+
+//React-fire
 import {
   FirebaseAuthProvider,
-  // FirebaseAuthConsumer,
   IfFirebaseAuthed,
-  // IfFirebaseAuthedAnd,
   IfFirebaseUnAuthed,
-  // IfFirebaseAuthedOr,
 } from "@react-firebase/auth";
 
-//move to own JS file
-const firebaseConfig = {
-  apiKey: "AIzaSyAgcEnJzVuKthqlkwmaqUM0I_-0xmix_S4",
-  authDomain: "efficiencies-e21b3.firebaseapp.com",
-  projectId: "efficiencies-e21b3",
-  storageBucket: "efficiencies-e21b3.appspot.com",
-  messagingSenderId: "744703333521",
-  appId: "1:744703333521:web:5d576a4f5b3cd318a91b30",
-  measurementId: "G-4D8M9E70WK",
-};
+//Redux-firebase
+import store from './Redux/Store'
+import { Provider } from 'react-redux'
+import { ReactReduxFirebaseProvider } from 'react-redux-firebase'
+
+// Initialize firebase instances
+firebase.initializeApp(firebaseConfig)
+firebase.firestore()
 
 // TODO - Charts? - https://www.chartjs.org/docs/latest/
 function App() {
   return (
-    <FirebaseAuthProvider firebase={firebase} {...firebaseConfig}>
-      <FirebaseAppProvider firebaseConfig={firebaseConfig}>
-        <IfFirebaseUnAuthed>
-          <AuthPage />
-        </IfFirebaseUnAuthed>
-        <IfFirebaseAuthed>
-          <Router>
-            <div>
-              <nav>
-                <ul>
-                  <li>
-                    <Link to="/newgame">New Game</Link>
-                  </li>
-                  <li>
-                    <Link to="/analytics">Analytics</Link>
-                  </li>
-                  <li>
-                    <Link to="/games">Games</Link>
-                  </li>
-                  <li>
-                    <Link to="/profile">Profile</Link>
-                  </li>
-                </ul>
-              </nav>
-
-              <hr />
-              <Switch>
-                <Route exact path="/">
-                  <div>nothing here right now...</div>
-                </Route>
-                <Route path="/newgame">
-                  <NewGame />
-                </Route>
-                <Route path="/analytics">
-                  <Analytics />
-                </Route>
-                <Route path="/games">
-                  <Games />
-                </Route>
-                <Route path="/profile">
-                  <MyTeam />
-                </Route>
-              </Switch>
-            </div>
-          </Router>
-        </IfFirebaseAuthed>
-      </FirebaseAppProvider>
-    </FirebaseAuthProvider>
+    <Provider store={store}>
+      <ReactReduxFirebaseProvider {...rrfProps}>
+        <FirebaseAuthProvider firebase={firebase} {...firebaseConfig}>
+          <FirebaseAppProvider firebaseConfig={firebaseConfig}>
+            <IfFirebaseUnAuthed>
+              <AuthPage />
+            </IfFirebaseUnAuthed>
+            <IfFirebaseAuthed>
+              <Router />
+            </IfFirebaseAuthed>
+          </FirebaseAppProvider>
+        </FirebaseAuthProvider>
+      </ReactReduxFirebaseProvider>
+    </Provider>
   );
 }
 
