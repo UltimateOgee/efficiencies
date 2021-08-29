@@ -20,7 +20,7 @@ export default function Router() {
               <Link to="/games">Games</Link>
             </li>
             <li>
-              <Link to="/profile">Profile</Link>
+              <Link to="/myTeam">My Team</Link>
             </li>
           </ul>
         </nav>
@@ -39,7 +39,7 @@ export default function Router() {
           <Route path="/games">
             <Games />
           </Route>
-          <Route path="/profile">
+          <Route path="/myTeam">
             <MyTeam />
           </Route>
         </Switch>

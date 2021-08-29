@@ -1,15 +1,13 @@
 // React
-// import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import {rrfProps, firebaseConfig} from './Config';
 import Router from './Router'
 import AuthPage from "./main-components/Auth/AuthPage"
-import {rrfProps, firebaseConfig} from './Config';
 
 // Firebase Imports
-//are these imports correct?
 import { FirebaseAppProvider } from "reactfire";
+import firebase from "firebase/app";
 import "firebase/auth";
 import 'firebase/firestore' 
-import firebase from "firebase/app";
 
 //React-fire
 import {
@@ -19,13 +17,11 @@ import {
 } from "@react-firebase/auth";
 
 //Redux-firebase
-import { Provider } from 'react-redux'
 import store from './Redux/Store'
+import { Provider } from 'react-redux'
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase'
 
-
-
-// Initialize firebase instance
+// Initialize firebase instances
 firebase.initializeApp(firebaseConfig)
 firebase.firestore()
 

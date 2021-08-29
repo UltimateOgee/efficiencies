@@ -1,13 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
-import userReducer from './Reducers/userReducer';
-import { firebaseReducer, firestoreReducer } from 'react-redux-firebase'
+import { rootReducer } from './Reducers/RootReducer.ts';
 
 const store = configureStore({
-  reducer: {
-    user: userReducer,
-    firebase: firebaseReducer,
-    // firestore: firestoreReducer
-  },
+  reducer: rootReducer,
   //middleware,
 });
 

@@ -1,8 +1,8 @@
 import firebase from "firebase/app";
 import store from './Redux/Store';
-// import { createFirestoreInstance } from 'react-redux-firebase'
+import { createFirestoreInstance } from 'redux-firestore'
 
-
+// Firebase config
 export const firebaseConfig = {
   apiKey: "AIzaSyAgcEnJzVuKthqlkwmaqUM0I_-0xmix_S4",
   authDomain: "efficiencies-e21b3.firebaseapp.com",
@@ -15,14 +15,13 @@ export const firebaseConfig = {
 
 // react-redux-firebase config
 export const rrfConfig = {
-  userProfile: 'users'
-  // useFirestoreForProfile: true // Firestore for Profile instead of Realtime DB
-  // enableClaims: true // Get custom claims along with the profile
+  userProfile: 'users',
+  useFirestoreForProfile: true // Firestore for Profile instead of Realtime DB
 }
 
 export const rrfProps = {
   firebase,
   config: rrfConfig,
   dispatch: store.dispatch,
-  // createFirestoreInstance
+  createFirestoreInstance
 }
