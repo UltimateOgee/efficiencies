@@ -3,6 +3,7 @@ import { Typography } from "@material-ui/core";
 import AddTableItem from "./AddTableItem";
 
 export default function Roster() {
+  // eslint-disable-next-line
   const [roster, setRoster] = useState([
     {
       'name': 'Emerson Spradling',
