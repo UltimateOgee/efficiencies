@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Typography } from "@material-ui/core";
-import firebase from "firebase";
 import AddTableItem from "./AddTableItem";
-import { useDispatch } from "react-redux";
 
 export default function Roster() {
   const [roster, setRoster] = useState([

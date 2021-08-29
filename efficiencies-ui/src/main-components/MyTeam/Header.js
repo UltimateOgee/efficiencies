@@ -1,6 +1,5 @@
 import React from "react";
 import { Typography } from "@material-ui/core";
-import firebase from "firebase";
 
 export default function Plays() {
   return(
