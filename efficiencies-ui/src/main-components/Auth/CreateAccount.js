@@ -17,7 +17,7 @@ export default function CreateAccount() {
     .then(() => {
       firebase.createUser(
         { email: userInfo.email, password: userInfo.password },
-        { caochName: userInfo.coachName, teamName: userInfo.teamName, roster: [], plays: [] }
+        { coachName: userInfo.coachName, teamName: userInfo.teamName, roster: [], plays: [] }
       )
       // firebase.auth().createUserWithEmailAndPassword(userInfo.email, userInfo.password)
       // .then((userCredential) => {
