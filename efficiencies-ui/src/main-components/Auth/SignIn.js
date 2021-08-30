@@ -78,10 +78,10 @@ export default function SignIn() {
       </Typography>
 
       <form>
-      <TextField
-        id='emailInput'
-        label="email" 
-        onChange={(event) => setUserInfo({...userInfo, email: event.target.value})}/>
+        <TextField
+          id='emailInput'
+          label="email" 
+          onChange={(event) => setUserInfo({...userInfo, email: event.target.value})}/>
 
         { showEmailError ? <Typography color="error" variant="body1">{emailError}</Typography> : null } 
 

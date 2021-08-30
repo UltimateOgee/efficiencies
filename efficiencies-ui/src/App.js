@@ -22,6 +22,7 @@ import { Provider } from 'react-redux'
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase'
 
 // Initialize firebase instances
+// TODO - Initializes twice in redux???
 firebase.initializeApp(firebaseConfig)
 firebase.firestore()
 
