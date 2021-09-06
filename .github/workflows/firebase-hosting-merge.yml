@@ -20,3 +20,4 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_EFFICIENCIES_E21B3 }}'
           channelId: live
           projectId: efficiencies-e21b3
+          entryPoint: "./efficiencies-ui" 
