@@ -3,7 +3,9 @@ import firebase from "firebase";
 import Header from "./MyTeam/Header"
 import Roster from "./MyTeam/Roster"
 import Plays from "./MyTeam/Plays"
+import Button from "@material-ui/core/Button";
 
+// TODO - Make entries deleteable
 export default function MyTeam() {
   return (
     <>
@@ -11,13 +13,18 @@ export default function MyTeam() {
       <br/>
       <Roster/>
       <Plays/>
-      <button
+      
+      <Button
         onClick={() => {
           firebase.auth().signOut();
         }}
-      >
-        Sign Out
-      </button>
+        variant="contained"
+        size="small"
+        color="primary"
+        >
+        sign out
+      </Button>
+      
     </>
   );
 }
