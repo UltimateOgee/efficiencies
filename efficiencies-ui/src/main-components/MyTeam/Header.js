@@ -11,7 +11,7 @@ export default function Plays() {
         Welcome, {profile.teamName}
       </Typography>
       <Typography component={'span'} variant="body1">
-        {profile.coachName}
+        Coach: {profile.coachName}
       </Typography>
     </>
   )

@@ -5,7 +5,11 @@ import { useSelector } from "react-redux";
 
 export default function Plays() {
   // If playFields is changed, you must also change interface in RootReducer
-  const playFields = ['Name', 'Type', 'Possession'];
+  const playFields = {
+    'Name': [], 
+    'Type': ['Zone', 'Man-to-Man', '4-out'], 
+    'Possession': []
+  };
   const [plays, setPlays] = useState([]);
 
   const reduxPlays = useSelector(({ firebase: { profile } }) => profile.plays)
@@ -26,19 +30,24 @@ export default function Plays() {
 
       <table>
         <tr>
-          {playFields.map(field => <th>{field}</th>)}
+          {Object.keys(playFields).map(field => field === 'Possession' ? null : <th>{field}</th>)}
         </tr>
-        {plays ? plays.map(play => 
-          {if (play.Possession !== 'Defence') {
-            return(<tr>
-              {playFields.map(field => 
-                <td>{play[field] }</td>
-              )}
-            </tr>)
-          }else return null}
-          ) : 'loading...'}
+        
+        {
+          plays ? plays.map(play => {
+            if (play.Possession === 'o') {
+              return(
+                <tr>
+                  {Object.keys(playFields).map(field => 
+                    field === 'Possession' ? null : <td>{play[field]}</td>
+                  )}
+                </tr>
+              )
+            }else return null
+          }) : 'loading...'
+        }
 
-        <AddTableItem fields={playFields} type='plays'/>
+        <AddTableItem fields={{...playFields, 'Possession': ['o']}} type='plays'/>
       </table>
 
       <Typography variant="h5">
@@ -47,19 +56,24 @@ export default function Plays() {
 
       <table>
         <tr>
-          {playFields.map(field => <th>{field}</th>)}
+          {Object.keys(playFields).map(field => field === 'Possession' ? null : <th>{field}</th>)}
         </tr>
-        {plays ? plays.map(play => 
-          {if (play.Possession !== 'Offense') {
-            return(<tr>
-              {playFields.map(field => 
-                <td>{play[field] }</td>
-              )}
-            </tr>)
-          }else return null}
-          ) : 'loading...'}
+        
+        {
+          plays ? plays.map(play => {
+            if (play.Possession === 'd') {
+              return(
+                <tr>
+                  {Object.keys(playFields).map(field => 
+                    field === 'Possession' ? null : <td>{play[field]}</td>
+                  )}
+                </tr>
+              )
+            }else return null
+          }) : 'loading...'
+        }
 
-        <AddTableItem fields={playFields} type='plays'/>
+        <AddTableItem fields={{...playFields, 'Possession': ['d']}} type='plays'/>
       </table>
     </>
   );

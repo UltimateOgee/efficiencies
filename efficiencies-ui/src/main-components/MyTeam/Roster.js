@@ -5,7 +5,12 @@ import { useSelector } from "react-redux";
 
 export default function Roster() {
   // If rosterFields is changed, you must also change interface in RootReducer
-  const rosterFields = ['Name', 'Position', 'Height', 'Weight'];
+  const rosterFields = {
+    'Name': [], 
+    'Position': ['Guard', 'Small Forward', 'Power Forward', 'Center'], 
+    'Height': [], 
+    'Year': ['Freshman', 'Sophmore', 'Junior', 'Senior']
+  };
   const [roster, setRoster] = useState([]);
 
   const reduxRoster = useSelector(({ firebase: { profile } }) => profile.roster)
@@ -13,6 +18,7 @@ export default function Roster() {
     setRoster(reduxRoster);
   }, [reduxRoster])
 
+  // TODO Height enforcing numbers
   // Potential table example - https://material-ui.com/components/tables/#ReactVirtualizedTable.js
   return (
     <>
@@ -22,15 +28,18 @@ export default function Roster() {
       
       <table>
         <tr>
-          {rosterFields.map(field => <th>{field}</th>)}
+          {Object.keys(rosterFields).map(field => <th>{field}</th>)}
         </tr>
-        {roster ? roster.map(player => 
-          <tr>
-            {rosterFields.map(field => 
-              <td>{player[field] }</td>
-            )}
-          </tr>
-          ) : 'loading...'}
+        
+        {
+          roster ? roster.map(player => 
+            <tr>
+              {Object.keys(rosterFields).map(field => 
+                <td>{player[field]}</td>
+              )}
+            </tr>
+            ) : 'loading...'
+        }
 
         <AddTableItem fields={rosterFields} type='roster'/>
       </table>

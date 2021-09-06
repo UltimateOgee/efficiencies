@@ -6,7 +6,7 @@ export interface Player {
   name: string,
   position: string,
   height: number,
-  weight: number
+  year: string
 }
 export interface Play {
   name: string,
