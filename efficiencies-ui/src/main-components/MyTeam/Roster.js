@@ -50,31 +50,37 @@ export default function Roster() {
       Roster
       </Typography>
       
-      <table>
-        <tr>
-          {Object.keys(rosterFields).map(field => <th>{field}</th>)}
-        </tr>
-        
-        {
-          roster ? roster.map((player, i) => 
-            <tr id={i}>
-              {Object.keys(rosterFields).map(field => 
-                <td>{player[field]}</td>
+      {
+        roster ? 
+          <table>
+            <thead>
+              <tr>
+                {Object.keys(rosterFields).map(field => <th key={field}>{field}</th>)}
+              </tr>
+            </thead>
+            
+            <tbody>
+              {roster.map((player, i) => 
+                <tr key={i}>
+                  {Object.keys(rosterFields).map((field, i2) => 
+                    <td key={i2}>{player[field]}</td>
+                  )}
+                  <td>
+                    <button 
+                      disabled={isDisabled}
+                      onClick={handleSubmitClicked.bind(this, i)}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
               )}
-              <td>
-                <button 
-                  disabled={isDisabled}
-                  onClick={handleSubmitClicked.bind(this, i)}
-                >
-                  Delete
-                </button>
-              </td>
-            </tr>
-            ) : 'loading...'
-        }
-
-        <AddTableItem fields={rosterFields} type='roster'/>
-      </table>
+              
+              <AddTableItem fields={rosterFields} type='roster'/>
+            </tbody>
+          </table>
+        : <p>loading...</p>
+      }
     </>
   );
 }

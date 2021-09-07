@@ -4,6 +4,7 @@ import { Typography } from "@material-ui/core";
 import AddTableItem from "./AddTableItem";
 import { useSelector } from "react-redux";
 
+
 export default function Plays() {
   const firebase = useFirebase()
   const [isDisabled, setIsDisabled] = useState(false);
@@ -53,69 +54,81 @@ export default function Plays() {
       Offense
       </Typography>
 
-      <table>
-        <tr>
-          {Object.keys(playFields).map(field => field === 'Possession' ? null : <th>{field}</th>)}
-        </tr>
-        
-        {
-          plays ? plays.map((play, i) => {
-            if (play.Possession === 'o') {
-              return(
-                <tr>
-                  {Object.keys(playFields).map(field => 
-                    field === 'Possession' ? null : <td>{play[field]}</td>
-                  )}
-                  <td>
-                    <button 
-                      disabled={isDisabled}
-                      onClick={handleSubmitClicked.bind(this, i)}
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              )
-            }else return null
-          }) : 'loading...'
-        }
+      {
+        plays ?
+          <table>
+            <thead>
+              <tr>
+                {Object.keys(playFields).map(field => field === 'Possession' ? null : <th key={field}>{field}</th>)}
+              </tr>
+            </thead>
+            
+            <tbody>
+              {plays.map((play, i) => {
+                  if (play.Possession === 'o') {
+                    return(
+                      <tr key={i}>
+                        {Object.keys(playFields).map((field, i2) => 
+                          field === 'Possession' ? null : <td key={i2}>{play[field]}</td>
+                        )}
+                        <td>
+                          <button 
+                            disabled={isDisabled}
+                            onClick={handleSubmitClicked.bind(this, i)}
+                          >
+                            Delete
+                          </button>
+                        </td>
+                      </tr>
+                    )
+                  } else return null
+              })}
 
-        <AddTableItem fields={{...playFields, 'Possession': ['o']}} type='plays'/>
-      </table>
+              <AddTableItem fields={{...playFields, 'Possession': ['o']}} type='plays'/>
+            </tbody>
+          </table>
+        : <p>loading...</p>
+      }
 
       <Typography variant="h5">
       Defence
       </Typography>
+      
+      {
+        plays ? 
+          <table>
+            <thead>
+              <tr>
+                {Object.keys(playFields).map(field => field === 'Possession' ? null : <th key={field}>{field}</th>)}
+              </tr>
+            </thead>
 
-      <table>
-        <tr>
-          {Object.keys(playFields).map(field => field === 'Possession' ? null : <th>{field}</th>)}
-        </tr>
-        
-        {
-          plays ? plays.map((play, i) => {
-            if (play.Possession === 'd') {
-              return(
-                <tr>
-                  {Object.keys(playFields).map(field => 
-                    field === 'Possession' ? null : <td>{play[field]}</td>
-                  )}
-                  <td>
-                    <button 
-                      disabled={isDisabled}
-                      onClick={handleSubmitClicked.bind(this, i)}
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              )
-            }else return null
-          }) : 'loading...'
-        }
+            <tbody>
+              {plays.map((play, i) => {
+                  if (play.Possession === 'd') {
+                    return(
+                      <tr key={i}>
+                        {Object.keys(playFields).map((field, i2) => 
+                          field === 'Possession' ? null : <td key={i2}>{play[field]}</td>
+                        )}
+                        <td>
+                          <button 
+                            disabled={isDisabled}
+                            onClick={handleSubmitClicked.bind(this, i)}
+                          >
+                            Delete
+                          </button>
+                        </td>
+                      </tr>
+                    )
+                  } else return null
+              })}
 
-        <AddTableItem fields={{...playFields, 'Possession': ['d']}} type='plays'/>
-      </table>
+              <AddTableItem fields={{...playFields, 'Possession': ['d']}} type='plays'/>
+            </tbody>
+          </table>
+        : <p>loading...</p> 
+      }
     </>
   );
 }

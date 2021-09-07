@@ -43,7 +43,7 @@ export default function AddTableItem(props) {
         const values = props.fields
         if (values[field].length === 0){
           return(
-            <td>
+            <td key={'input' + field}>
               <input 
               type='text'
               className='field' 
@@ -65,11 +65,11 @@ export default function AddTableItem(props) {
           return null
         } else {
           const options = values[field].map(option => {
-            return(<option value={option}>{option}</option>)
+            return(<option value={option} key={option}>{option}</option>)
           });
 
           return (
-            <td>
+            <td key='addTableItem'>
               <select 
               className='field' 
               id={field}
