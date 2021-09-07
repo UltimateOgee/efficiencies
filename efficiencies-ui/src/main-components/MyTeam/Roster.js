@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { useFirebase } from 'react-redux-firebase'
 import { Typography } from "@material-ui/core";
 import AddTableItem from "./AddTableItem";
 import { useSelector } from "react-redux";
 
 export default function Roster() {
+  const firebase = useFirebase()
+  const [isDisabled, setIsDisabled] = useState(false);
   // If rosterFields is changed, you must also change interface in RootReducer
   const rosterFields = {
-    'Name': [], 
+    'Player Name': [], 
     'Position': ['Guard', 'Small Forward', 'Power Forward', 'Center'], 
     'Height': [], 
     'Year': ['Freshman', 'Sophmore', 'Junior', 'Senior']
@@ -17,6 +20,27 @@ export default function Roster() {
   useEffect(() => {
     setRoster(reduxRoster);
   }, [reduxRoster])
+
+  const enableComponents = () => {
+    setIsDisabled(false);
+  }
+  // TODO - make a button wrapper?
+  const handleSubmitClicked = (index) => {
+    setIsDisabled(true);
+    deleteEntry(index);
+  }
+
+  const deleteEntry = index => {
+    const newRoster = roster.slice();
+    newRoster.splice(index, 1);
+    
+    const updatedField = {};
+    updatedField['roster'] = newRoster;
+    firebase.updateProfile(updatedField);
+    
+    enableComponents();
+  }
+
 
   // TODO Height enforcing numbers
   // Potential table example - https://material-ui.com/components/tables/#ReactVirtualizedTable.js
@@ -32,11 +56,19 @@ export default function Roster() {
         </tr>
         
         {
-          roster ? roster.map(player => 
-            <tr>
+          roster ? roster.map((player, i) => 
+            <tr id={i}>
               {Object.keys(rosterFields).map(field => 
                 <td>{player[field]}</td>
               )}
+              <td>
+                <button 
+                  disabled={isDisabled}
+                  onClick={handleSubmitClicked.bind(this, i)}
+                >
+                  Delete
+                </button>
+              </td>
             </tr>
             ) : 'loading...'
         }

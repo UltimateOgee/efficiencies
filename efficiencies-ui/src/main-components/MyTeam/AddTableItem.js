@@ -46,7 +46,7 @@ export default function AddTableItem(props) {
             <td>
               <input 
               type='text'
-              class='field' 
+              className='field' 
               id={field}
               onChange={(event) => {
                 const changeField = {}
@@ -71,7 +71,7 @@ export default function AddTableItem(props) {
           return (
             <td>
               <select 
-              class='field' 
+              className='field' 
               id={field}
               onChange={(event) => {
                 const changeField = {}
