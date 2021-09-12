@@ -2,6 +2,7 @@ import React from "react";
 import Opponent from "./NewGame/Opponent";
 import { Divider } from "@material-ui/core";
 import LiveTracking from "./NewGame/LiveTracking";
+import BarChart from "./NewGame/BarChart";
 
 export default function NewGame() {
   return (
@@ -9,6 +10,7 @@ export default function NewGame() {
       <Opponent />
       <Divider variant="middle" />
       <LiveTracking />
+      <BarChart />
     </>
   );
 }

@@ -26,7 +26,6 @@ import { ReactReduxFirebaseProvider } from 'react-redux-firebase'
 firebase.initializeApp(firebaseConfig)
 firebase.firestore()
 
-// TODO - Charts? - https://www.chartjs.org/docs/latest/
 function App() {
   return (
     <Provider store={store}>
