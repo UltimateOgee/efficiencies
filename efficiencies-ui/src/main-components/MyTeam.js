@@ -1,11 +1,10 @@
 import React from "react";
-import firebase from "firebase";
+import firebase from "firebase/app";
 import Header from "./MyTeam/Header"
 import Roster from "./MyTeam/Roster"
 import Plays from "./MyTeam/Plays"
 import Button from "@material-ui/core/Button";
 
-// TODO - Make entries deleteable
 export default function MyTeam() {
   return (
     <>

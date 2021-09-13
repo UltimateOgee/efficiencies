@@ -43,10 +43,10 @@ export default function AddTableItem(props) {
         const values = props.fields
         if (values[field].length === 0){
           return(
-            <td>
+            <td key={'input' + field}>
               <input 
               type='text'
-              class='field' 
+              className='field' 
               id={field}
               onChange={(event) => {
                 const changeField = {}
@@ -65,13 +65,13 @@ export default function AddTableItem(props) {
           return null
         } else {
           const options = values[field].map(option => {
-            return(<option value={option}>{option}</option>)
+            return(<option value={option} key={option}>{option}</option>)
           });
 
           return (
-            <td>
+            <td key='addTableItem'>
               <select 
-              class='field' 
+              className='field' 
               id={field}
               onChange={(event) => {
                 const changeField = {}
