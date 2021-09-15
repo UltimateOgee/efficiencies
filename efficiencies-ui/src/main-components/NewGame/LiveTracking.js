@@ -71,10 +71,10 @@ export default function LiveTracking() {
           </Tabs>
         </AppBar>
         <TabPanel value={value} index={0}>
-          <LiveTrackingButtons />
+          <LiveTrackingButtons possession={"Offense"} />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <LiveTrackingButtons />
+          <LiveTrackingButtons possession={"Defense"} />
         </TabPanel>
       </div>
     </>
