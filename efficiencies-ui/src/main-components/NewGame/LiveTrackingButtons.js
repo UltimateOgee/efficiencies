@@ -23,7 +23,7 @@ export default function LiveTrackingButtons(props) {
     } else{
       setPlays(reduxPlays);
     } 
-  }, [reduxPlays])
+  }, [reduxPlays, props.possession])
 
   const deleteLatestData = () => {
     alert("not implemented");
