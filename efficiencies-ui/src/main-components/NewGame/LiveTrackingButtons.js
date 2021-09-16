@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import InputLabel from "@material-ui/core/InputLabel";
@@ -7,9 +7,23 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import { makeStyles } from "@material-ui/core/styles";
 import firebase from "firebase/app";
+import { useSelector } from "react-redux";
 
 export default function LiveTrackingButtons(props) {
-  const [playType, setPlayType] = React.useState("");
+  const [playType, setPlayType] = useState("");
+
+  const [plays, setPlays] = useState([]);
+  const reduxPlays = useSelector(({ firebase: { profile } }) => profile.plays)
+  useEffect(() => {
+    if(reduxPlays){
+      const filteredPlays = props.possession === 'Offense' ? 
+        reduxPlays.filter(p => p.Possession === 'o') :
+        reduxPlays.filter(p => p.Possession === 'd')
+      setPlays(filteredPlays);
+    } else{
+      setPlays(reduxPlays);
+    } 
+  }, [reduxPlays])
 
   const deleteLatestData = () => {
     alert("not implemented");
@@ -122,11 +136,9 @@ export default function LiveTrackingButtons(props) {
                 value={playType}
                 onChange={handleChange}
               >
-                <MenuItem value={"Pick and Roll"}>Pick and Roll</MenuItem>
-                <MenuItem value={"ISO"}>ISO</MenuItem>
-                <MenuItem value={"Shwabble dabble method"}>
-                  Shwabble dabble method
-                </MenuItem>
+                {plays ? plays.map(p => {
+                  return(<MenuItem value={p.Name}>{p.Name}</MenuItem>)
+                }) : null}
               </Select>
             </FormControl>
           </Grid>

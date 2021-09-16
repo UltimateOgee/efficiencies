@@ -57,11 +57,15 @@ export default function BarChart({id, labels = [], title = '', data = [], color 
   };
   
   useEffect(() => {
-    var ctx = document.getElementById(id);
-    new Chart(ctx, config);
+    let ctx = document.getElementById(id);
+    const chart = new Chart(ctx, config);
     let div = document.getElementById(id + 'Wrapper');
     div.style.width = '500px'
     div.style.height = '300px'
+
+    return function cleanup () {
+      chart.destroy();
+    }
   });
 
   return (
