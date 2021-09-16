@@ -35,7 +35,7 @@ export default function LiveTrackingButtons(props) {
       //this should be interally announced rather than a simple alert later...
       alert("You must pick a play type to log this outcome!");
     } else {
-      const userRef = db.collection("liveTrackingData").add({
+      db.collection("liveTrackingData").add({
         date: currDate,
         playType: tempPlay,
         outcome: result,
