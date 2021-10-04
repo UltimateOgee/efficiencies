@@ -10,6 +10,7 @@ import firebase from "firebase/app";
 import { useSelector } from "react-redux";
 
 export default function LiveTrackingButtons(props) {
+  const uid = useSelector(({ firebase: { auth } }) => auth.uid)
   const [playType, setPlayType] = useState("");
 
   const [plays, setPlays] = useState([]);
@@ -42,7 +43,7 @@ export default function LiveTrackingButtons(props) {
     //this would be a useful setting but it ended up being an end-all-be-all
     //might want to see if it can be configured to only be turned on here.
     //const currDate = new Date().getTime();
-    var currDate = new Date(Number(new Date()));
+    let currDate = new Date(Number(new Date()));
     let tempPlay = "";
     tempPlay = playType;
     if (tempPlay === "") {
@@ -54,12 +55,16 @@ export default function LiveTrackingButtons(props) {
         playType: tempPlay,
         outcome: result,
         possession: props.possession,
+        opponent: props.opponent,
+        uid: uid
       });
       //this should be interally announced rather than a simple alert later...
       alert(`Data logged (time omitted but stored):
       date: ${currDate.toDateString()},
       playType: ${tempPlay},
       outcome: ${result},
+      opponent: ${props.opponent},
+      uid: ${uid},
       possession: ${props.possession}`);
     }
   };

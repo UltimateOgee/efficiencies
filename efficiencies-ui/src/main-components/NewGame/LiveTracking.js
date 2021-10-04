@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function LiveTracking() {
+export default function LiveTracking(props) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -71,10 +71,10 @@ export default function LiveTracking() {
           </Tabs>
         </AppBar>
         <TabPanel value={value} index={0}>
-          <LiveTrackingButtons possession={"Offense"} />
+          <LiveTrackingButtons opponent={props.opponent} possession={"Offense"} />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <LiveTrackingButtons possession={"Defense"} />
+          <LiveTrackingButtons opponent={props.opponent} possession={"Defense"} />
         </TabPanel>
       </div>
     </>

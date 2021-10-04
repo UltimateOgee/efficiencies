@@ -3,7 +3,7 @@ import React from "react";
 
 /**
  * Props object definition
- * @typedef {Object} Entry
+ * @typedef {Object} Data
  * @property {string} name - Name of the play
  * @property {number} efficiency - Current efficiency of the play
  * @property {string[]} histroy - List of past 5 outcomes for the play denoted by X,F,2,3
@@ -12,16 +12,16 @@ import React from "react";
 /**
  * Props object definition
  * @typedef {Object} Props
- * @property {Entry[]} entries - ID for the bar chart
+ * @property {Data[]} data - ID for the bar chart
  */
 
 /**
  * Creates a bar chart using the data passed in through props
  * @param {Props} props 
  */
-export default function EfficiencyTable({entries = []}) {
+export default function EfficiencyTable({data = [], possession}) {
   // TODO - remove table warnings
-  
+
   const getEfficiencyColor = (e) => {
     if(e > .5) return('green');
     if(e > .3) return('orange');
@@ -29,10 +29,17 @@ export default function EfficiencyTable({entries = []}) {
   };
 
   const getHistoryColor = (p) => {
-    if(p === 'X') return('red');
-    if(p === 'F') return('orange');
-    if(p === '2') return('blue');
-    if(p === '3') return('green');
+    if(possession === 'Offense'){
+      if(p === 'X') return('red');
+      if(p === 'F') return('orange');
+      if(p === '2') return('blue');
+      if(p === '3') return('green');
+    }else {
+      if(p === 'X') return('green');
+      if(p === 'F') return('blue');
+      if(p === '2') return('orange');
+      if(p === '3') return('red');
+    }
   };
 
   return (
@@ -46,7 +53,7 @@ export default function EfficiencyTable({entries = []}) {
           </tr>
         </thead>
         <tbody>
-          {entries.map(entry => {
+          {data.map(entry => {
             return(<tr>
               <td>{entry.name}</td>
               
